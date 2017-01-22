@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepgflibrary{arrows}
+\usetikzlibrary{svg.path}
+\title{My\_part}
+\author{Nittin Singh}
+
+\begin{document}
+\usetikzlibrary{positioning,shapes,shadows,arrows}
+\definecolor{mycolor}{RGB}{220,150,0}
+\definecolor{my2color}{RGB}{150,150,150}
+\definecolor{my3color}{RGB}{0,170,220}
+\maketitle
+\newpage
+\section{ News Sharing }
+\subsection{Basic Working:}
+\par Everyone can suggest news(relevant to the college or worth sharing) to the admin.\\
+Its the duty of admin to publish weekly newspaper for the entire college.
+\subsection{Block Design:}
+ IIT Ropar app will contain certain options. One such option is "News Share".This\\ 
+ option will lead to further options, as shown:\\
+\tikzstyle{options}=[rectangle, draw=black, rounded corners, fill=mycolor, drop shadow, text centered, anchor=north, text=white, text width=3cm]
+\tikzstyle{description}=[rectangle, draw=black, rounded corners, fill=my2color, drop shadow,text centered, anchor=north, text=white, text width=3cm]
+\tikzstyle{myarrow}=[->, >=open triangle 90, thick]
+\tikzstyle{line}=[-, thick]
+\linebreak
+\subsubsection{First Step}
+\begin{tikzpicture}[node distance=2cm,thick]
+    \node (News-Share) [options,anchor=center]
+        {
+            \textbf{News Share}
+        };
+    \node(Details)[description,text width=5cm, right=of News-Share]{
+     \textbf{Click on this ~option this will lead to further sub-options}
+     };
+    \node (sub-options) [options, text width=4cm, below=of News-Share,rectangle split,rectangle split parts=3] { 
+            \textbf{College Weekly}
+            \nodepart{second}\textbf{Your Group paper}
+            \nodepart{third}\textbf{Create Your Group}
+      };
+    \draw[black, -latex] (News-Share) -- (Details);
+    \draw[black, -latex] (News-Share) -- (sub-options);
+   
+\end{tikzpicture}
+\subsubsection{College Weekly}
+\begin{tikzpicture}[node distance=2cm,thick]
+    \node (College Weekly) [options,anchor=center]
+        {
+            \textbf{College Weekly}
+        };
+    \node(Details)[description,text width=5cm, right=of News-Share]{
+     \textbf{Click on this option this will lead to further sub-options}
+     };
+     
+    \node (sub-options) [options, fill=my3color,text width=4cm, below=of College Weekly,rectangle split,rectangle split parts=3] { 
+            \textbf{View Weekly}
+            \nodepart{second}\textbf{Suggest News}
+            \nodepart{third}\textbf{Add Review}
+      };
+      \node(Details1)[description,text width=5cm, right=of sub-options]{
+     \textbf{"View Weekly" \\
+      It will show the weekly news-collection}
+     };
+     \node(Details2)[description,text width=5cm, below=of Details1]{
+     \textbf{"Suggest News"\\
+     It will allow the user to recommend news to the admin.}
+     };
+     \node(Details3)[description,text width=5cm, below=of Details2]{
+     \textbf{Allows the user to add review about any particular news.
+     These reviews are visible to everyone.}
+     };
+    \draw[black, -latex] (College Weekly) -- (Details);
+    \draw[black, -latex] (College Weekly) -- (sub-options);
+    \draw[black, -latex] (sub-options) -- (Details1);
+    \draw[black, thick, -latex](sub-options) -- (Details1);
+    \draw[black, thick, -latex](sub-options) -- (Details2);
+    \draw[black, thick, -latex](sub-options) -- (Details3);
+    
+\end{tikzpicture}
+\clearpage
+\subsubsection{Your Group paper}
+  \begin{tikzpicture}[node distance=2cm,thick]
+    \node (Group) [options,anchor=center]
+        {
+            \textbf{Your Group paper}
+        };
+    \node (sub-options) [options, fill=my3color,text width=4cm, below=of College Weekly,rectangle split,rectangle split parts=3] { 
+            \textbf{View Group Weekly}
+            \nodepart{second}\textbf{Suggest News}
+            \nodepart{third}\textbf{Add Review}
+        };
+     \node(Details1)[description,text width=5cm, right=of sub-options]{
+     \textbf{The options and functions are somewhat similar to that of the weekly paper.}
+     };
+    \node(Details)[description,text width=5cm, right=of News-Share]{
+     \textbf{Click on this ~option this will lead further to the groups that you are member of, and it will display the weekly shared by the group admins.}
+     };
+    \draw[black, -latex] (Group) -- (Details);
+    \draw[black, -latex] (Group) -- (sub-options);
+    \draw[black, -latex] (sub-options) -- (Details1);
+ \end{tikzpicture}
+\subsubsection{Create Your Group}
+  \begin{tikzpicture}[node distance=2cm,thick]
+    \node (create) [options,anchor=center]
+        {
+            \textbf{Create New Group}
+        };
+        
+    \node(Details)[description,text width=5cm, right=of News-Share]{
+     \textbf{This will help new members to form new groups and decide their own admin. For example: if professors want to share some information with their students then they can form their own groups and share.  }
+     };
+    \draw[black, -latex] (Group) -- (Details);
+   
+\end{tikzpicture}
+
+
+
+\end{document}
